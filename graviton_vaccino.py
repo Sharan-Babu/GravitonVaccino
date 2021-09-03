@@ -7,8 +7,8 @@ from streamlit_bokeh_events import streamlit_bokeh_events
 import smtplib
 import requests
 from io import BytesIO
-from azure.cognitiveservices.speech import AudioDataStream, SpeechConfig, SpeechSynthesizer, SpeechSynthesisOutputFormat
-from azure.cognitiveservices.speech.audio import AudioOutputConfig
+#from azure.cognitiveservices.speech import AudioDataStream, SpeechConfig, SpeechSynthesizer, SpeechSynthesisOutputFormat
+#from azure.cognitiveservices.speech.audio import AudioOutputConfig
 from msrest.authentication import CognitiveServicesCredentials
 import os
 import uuid
@@ -34,9 +34,9 @@ st.caption("Tip: Say 'help me' to get sample utterances")
 client = Wit("JWXHN3M6TIQFKZSOXT53D3ENQ77ROVCK")
 
 # Speech Synthesizer config
-speech_config = SpeechConfig(subscription="1a274dcd9b7140059bc32b9b00404391", region="eastus")
+#speech_config = SpeechConfig(subscription="1a274dcd9b7140059bc32b9b00404391", region="eastus")
 
-synthesizer = SpeechSynthesizer(speech_config=speech_config, audio_config=None)
+#synthesizer = SpeechSynthesizer(speech_config=speech_config, audio_config=None)
 
 
 # Function for cleaning raw html
@@ -169,18 +169,7 @@ if result:
 
         # News and tweets related to vaccines
         elif intent == 'vaccine_news':
-            # Audio with summary of the page
-            answer = """Here are some, important news and tweets related to vaccines. 
-                        You can use the links given to navigate to the source. To get information related to oxygen cylinders, try saying, 'any information related to oxygen cylinders' ? or a similar sentence."""
-
-            ssml_string = open("ssml.xml", "r").read().replace("my-sentence",answer).replace("my-lang","en-US").replace("my-voice","en-US-AriaRUS").replace("my-speed","0.9")   
-
-            with st.spinner("Fetching Audio..."):
-                result = synthesizer.speak_ssml_async(ssml_string).get()
-                stream = AudioDataStream(result)
-                stream.save_to_wav_file("st_file1.wav") 
-                time.sleep(0.1)
-                st.audio("st_file1.wav")
+            
 
             try:
                 res = requests.get("https://api.rootnet.in/covid19-in/stats/latest")  
@@ -256,14 +245,7 @@ if result:
                         You can do the same by saying, 'get me vaccination slots available', followed by your district name.
                         For example: Get me vaccination slots available in Hyderabad."""
 
-            ssml_string = open("ssml.xml", "r").read().replace("my-sentence",answer).replace("my-lang","en-US").replace("my-voice","en-US-AriaRUS").replace("my-speed","0.9")   
-
-            with st.spinner("Fetching Audio..."):
-                result = synthesizer.speak_ssml_async(ssml_string).get()
-                stream = AudioDataStream(result)
-                stream.save_to_wav_file("st_file1.wav") 
-                time.sleep(0.1)
-                st.audio("st_file1.wav")
+            
 
             try:
                 res = requests.get("https://api.rootnet.in/covid19-in/stats/latest")  
@@ -361,20 +343,7 @@ if result:
             except:
                 loc_id = 581    
 
-            answer = """Here are the available slots in your district.
-                    You can choose to see only few rows by saying, 'show only first few rows'.
-                    Else, make a note of the appointment IDs you are interested in and email the relevant information to yourself by saying, 'Email me the appointments' followed by their corresponding row numbers.
-                    """
-
-            # Generate audio file
-            ssml_string = open("ssml.xml", "r").read().replace("my-sentence",answer).replace("my-lang","en-US").replace("my-voice","en-US-AriaRUS").replace("my-speed","0.9")   
-
-            with st.spinner("Fetching Audio..."):
-                result = synthesizer.speak_ssml_async(ssml_string).get()
-                stream = AudioDataStream(result)
-                stream.save_to_wav_file("st_file1.wav") 
-                time.sleep(0.1)
-                st.audio("st_file1.wav")
+            
 
             temp = 0
             try:
@@ -479,16 +448,7 @@ if result:
                 st.info("Fetch appointments first.")    
 
         elif intent == 'app_details':
-            answer = """I am an application, here to help you with your vaccination needs."""
-
-            ssml_string = open("ssml.xml", "r").read().replace("my-sentence",answer).replace("my-lang","en-US").replace("my-voice","en-US-AriaRUS").replace("my-speed","0.9")   
-
-            with st.spinner("Fetching Audio..."):
-                result = synthesizer.speak_ssml_async(ssml_string).get()
-                stream = AudioDataStream(result)
-                stream.save_to_wav_file("st_file1.wav") 
-                time.sleep(0.1)
-                st.audio("st_file1.wav")                       
+                                   
             components.html("""Vaccino is a Wit.ai powered application that strives
                 to help people in India combat the fast spreading second wave
                 of the corona virus.<br> <br>
@@ -510,16 +470,7 @@ if result:
 
         # Help/FAQs
         elif intent == 'help':
-            answer = """You can try using one of the following utterances."""
-
-            ssml_string = open("ssml.xml", "r").read().replace("my-sentence",answer).replace("my-lang","en-US").replace("my-voice","en-US-AriaRUS").replace("my-speed","0.9")   
-
-            with st.spinner("Fetching Audio..."):
-                result = synthesizer.speak_ssml_async(ssml_string).get()
-                stream = AudioDataStream(result)
-                stream.save_to_wav_file("st_file1.wav") 
-                time.sleep(0.1)
-                st.audio("st_file1.wav")                      
+                                  
             components.html("""You can try one of the following utterances:
                 
                 <li> What can you do? </li>
