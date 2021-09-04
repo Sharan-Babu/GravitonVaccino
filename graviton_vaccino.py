@@ -447,7 +447,7 @@ if result:
 		elif intent == 'app_details':
 			st.audio("app_details.wav")
 								   
-			components.html("""Vaccino is a Wit.ai powered application that strives
+			components.html("""Vaccino is a voice application powered by Graviton2 processor that strives
 				to help people in India combat the fast spreading second wave
 				of the corona virus.<br> <br>
 				<b>Fetaures:</b>
