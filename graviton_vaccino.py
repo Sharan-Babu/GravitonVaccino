@@ -28,7 +28,7 @@ st.title("Vaccino 💉")
 st.caption("Tip: Say 'help me' to get sample utterances")
 
 
-# Setup Wit client
+# Setup NLP model
 client = Wit("JWXHN3M6TIQFKZSOXT53D3ENQ77ROVCK")
 
 
