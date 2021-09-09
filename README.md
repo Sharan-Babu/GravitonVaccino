@@ -1,8 +1,8 @@
 # GravitonVaccino
 
-**Devpost submission link**: <br>
-**Youtube Demo Link**: <br>
-**Website Link**: <br>
+**Devpost submission link**: https://devpost.com/software/vaccine-appointment <br>
+**Youtube Demo Link**: https://www.youtube.com/watch?v=wCy4obnNiko <br>
+**Website Link**: http://3.142.93.196:8501/ <br>
 
 # Steps to run website on local machine:
 
