@@ -34,6 +34,7 @@ Now, we have to add a Custom TCP Rule for our project. Click the 'Add Rule' butt
 <br>
 
 **6.** Click **Review and Launch**.
+
 ![s5](https://user-images.githubusercontent.com/50396375/132859221-5df373de-d253-484f-b5e0-17b8120a6bcd.PNG)
 
 <br>
