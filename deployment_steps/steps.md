@@ -29,10 +29,33 @@ Now, we have to add a Custom TCP Rule for our project. Click the 'Add Rule' butt
 7. Now, click the **Launch** button. In the pop-up window that appears, create a new key pair and download it. This is not to be shared publicly and will be used in later steps.
 
 ![s6](https://user-images.githubusercontent.com/50396375/132859599-e57c4d22-e783-4fc9-8952-501ada2b5cda.PNG)
+
 Click **Launch Instances**.
 
 8. Your Graviton2 based instance is now up and running. you can connect to this instance from your local machine using the following command:
 
 ```
-d
+ssh -i <"key_pair_name">ubuntu@<Your Public DNS Address (IPv4)>
 ```
+
+9. Execute the following commands:
+```
+git clone <Repo_HTTPS_URL>
+sudo apt update
+sudo apt-get install python3-pip
+pip3 install Cython
+pip3 install --upgrade pip setuptools
+
+sudo apt-get install tmux
+cd <Cloned_Repo_Name>
+pip3 install -r requirements.txt
+
+tmux new -s StreamSession
+streamlit run <filename.py>
+```
+
+Now, press **Ctrl + B** _and then_ **D** to keep the website running even if you leave the terminal.
+
+10. Our web application is now ready. You can visit the instances' **IPv4 Public IP** Address to access it. 
+
+![sf](https://user-images.githubusercontent.com/50396375/132866230-106a4558-ffb8-44b5-a518-4fc95e1c382a.PNG)
